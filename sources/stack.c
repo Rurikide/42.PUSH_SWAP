@@ -6,75 +6,104 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 19:54:28 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/02 21:24:45 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/03 17:52:53 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-bool    is_empty_stack(t_stack *st)
+bool    is_empty_stack(t_container *st)
 {
-    if (st == NULL)
+    if (st->top == NULL && st->bot == NULL)
         return (true);
     else
         return (false);
 }
 
-t_stack *add_stack_element(t_stack *st, int x)
+void    ft_add_front(t_container *stack, t_element *new)
 {
-    t_element   *element;
-
-    element = malloc(sizeof(*element));
-    if (element == NULL)
+    if (is_empty_stack(stack))
     {
-        write (1, "Error", 5);
-        write (1, "\n", 1);
-        exit(0);
-    }
-    element->nb = x;
-    element->prev = NULL;
-    element->next = NULL;
-    if (is_empty_stack(st))
-    {
-        st = malloc (sizeof(st));
-        if (st == NULL)
-        {
-            write (1, "Error", 5);
-            write (1, "\n", 1);
-            exit(0);
-            st->len = 0;
-            st->top = element;
-            st->end = element;
-        }
+        stack->top = new;
+        stack->bot = new;
     }
     else
     {
-        st->end->next = element;
-        element->prev = st->end;
-        st->end = element;
+        stack->top->prev = new;
+        new->next = stack->top;
+        stack->top = new;
     }
-    st->len++;
-    return (st);
+    stack->size++;
+    return ;
 }
-// FONCTION INTERDITE A ENLEVER : PRINTF
-#include <stdio.h>
 
-void    print_stack_element(t_stack *st)
+void    ft_add_back(t_container *stack, t_element *new)
 {
-    t_element *temp;
+    if (is_empty_stack(stack))
+    {
+        stack->top = new;
+        stack->bot = new;
+    }
+    else
+    {
+        stack->bot->next = new;
+        new->prev = stack->bot;
+        stack->bot = new;
+    }
+    stack->size++;
+    return ;
+}
 
-    if (is_empty_stack(st))
+t_element   *ft_new_element(int nb, size_t pos)
+{
+    t_element *new;
+    
+    new = (t_element *)malloc(sizeof(t_element));
+    if (new == NULL)
+        return (NULL);
+    new->nb = nb;
+    new->pos = pos;
+    new->prev = NULL;
+    new->next = NULL;
+    return (new);
+}
+
+t_container    new_container(void)
+{
+    t_container a;
+
+    a.size = 0;
+    a.top = NULL;
+    a.bot = NULL;
+    return(a);
+}
+
+void    ft_print_elements(t_container *a, t_container *b)
+{
+    t_element *ea;
+    t_element *eb;
+
+    ea = a->top;
+    eb = b->top;
+    
+    ft_printf("[A][B]\n");
+    while (ea != NULL || eb != NULL)
     {
-        write (1, "Vide", 4);
-        write (1, "\n", 1);
-        return ;
+        if (ea == NULL)
+            ft_printf(" ");
+        else
+        {
+            ft_printf("|%d|", ea->nb);
+            ea = ea->next;
+        }
+        if (eb == NULL)
+            ft_printf(" ");
+        else
+        {
+            ft_printf("|%d|", eb->nb);
+            eb = eb->next;
+        }
+        ft_printf("\n");
     }
-    temp = st->top;
-    while(temp->next != NULL)
-    {
-        printf("[%d] ", temp->nb);
-        temp = temp->next;
-    }
-    free(temp);
-    printf("\n");
+    ft_printf("\n");
 }

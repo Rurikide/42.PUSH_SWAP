@@ -6,7 +6,7 @@
 #    By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/01 22:25:32 by tshimoda          #+#    #+#              #
-#    Updated: 2022/01/01 23:08:47 by tshimoda         ###   ########.fr        #
+#    Updated: 2022/01/02 21:56:54 by tshimoda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,21 @@ AR= ar rc
 RM= rm -rf
 
 CC= gcc
-CFLAGS= -Wall -Werror -Wextra -c
+CFLAGS= -Wall -Werror -Wextra -c -g
 
 SDIR= sources
 ODIR= objects
 
-SRCS= push_swap.c \
+SRCS= main.c \
+		misc.c \
+		parse.c \
+		print.c \
+		push.c \
+		reverse.c \
+		rotate.c \
+		stack.c \
+		swap.c \
+		utils.c \
 
 OBJS= $(SRCS:.c=.o)
 
@@ -34,7 +43,8 @@ $(ODIR)/%.o: %.c
 	$(CC) $(CFLAGS) $< -o $@
 
 $(NAME): $(ODIR) $(OFIX)
-	$(CC) $(OFIX) -o $(NAME)
+	$(MAKE) -C ./libft
+	$(CC) $(OFIX) -lft -L./libft -o $(NAME)
 	@echo "\033[1;32m 下田、徳太郎のPUSH_SWAP\033[0;39m"
 
 all:    $(NAME)
@@ -44,11 +54,11 @@ $(ODIR):
 
 
 clean:
-#	$(MAKE) clean -C ./libft
+	$(MAKE) clean -C ./libft
 	$(RM) $(ODIR)
 
 fclean: clean
-#	$(MAKE) fclean -C ./libft
+	$(MAKE) fclean -C ./libft
 	$(RM) $(NAME)
 	@echo "\033[1;34m make fclean done!\033[0;39m"
 
