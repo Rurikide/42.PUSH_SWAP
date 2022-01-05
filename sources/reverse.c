@@ -6,7 +6,7 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:18:21 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/05 13:08:00 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/05 17:45:57 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,28 @@
 
 void	ft_shift_down(t_container *stack)
 {
-	// TEMPORAIRE, plutôt vérifier si la stack est vide dans la partie algorithme et non dans les actions
-	if (ft_is_empty_stack(stack))
-	{
+	t_element	*temp;
+
+	if (stack->size <= 1)
 		return ;
-	}
 	else
 	{
-		stack->top->prev = stack->bot;
+		temp = stack->bot;
+		stack->bot->prev->next = NULL;
 		stack->bot->next = stack->top;
-		stack->top = stack->bot;
 		stack->bot = stack->bot->prev;
-		stack->bot->next = NULL;
+		stack->top->prev = temp;
+		stack->top = stack->top->prev;
 		stack->top->prev = NULL;
 	}
-	return ;
 }
+	// OLD VERSION
+	// stack->top->prev = stack->bot;
+	// stack->bot->next = stack->top;
+	// stack->top = stack->bot;
+	// stack->bot = stack->bot->prev;
+	// stack->bot->next = NULL;
+	// stack->top->prev = NULL;
 
 void	ft_reverse_stack(t_container *a, t_container *b, t_stack id)
 {
@@ -49,6 +55,4 @@ void	ft_reverse_stack(t_container *a, t_container *b, t_stack id)
 		ft_shift_down(b);
 		ft_printf("rrr\n");
 	}
-	return ;
 }
-
