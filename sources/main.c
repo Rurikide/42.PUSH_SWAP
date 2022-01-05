@@ -21,11 +21,20 @@ int	main(int ac, char **av)
 	b = ft_new_container();
 	if (ac > 1)
 		ft_parse_argv(&a, &av[1]);
-	ft_print_elements(&a, &b);
-	ft_push_element(&a, &b);
-	ft_push_element(&a, &b);
-	ft_print_elements(&a, &b);
-	ft_push_element(&b, &a);
-	ft_print_elements(&a, &b);
+		ft_print_elements(&a, &b);
+	ft_push_stack(&a, &b, stack_b);
+		ft_print_elements(&a, &b);
+	ft_push_stack(&a, &b, stack_b);
+		ft_print_elements(&a, &b);
+	ft_push_stack(&a, &b, stack_b);
+		ft_print_elements(&a, &b);
+	ft_push_stack(&a, &b, stack_b);
+		ft_print_elements(&a, &b);
+	ft_rotate_stack(&a, &b,stack_b);
+		ft_print_elements(&a, &b);
+	ft_push_stack(&b, &a, stack_a);
+		ft_print_elements(&a, &b);
+	ft_reverse_stack(&a, &b,stack_a);
+		ft_print_elements(&a, &b);
 	return (0);
 }

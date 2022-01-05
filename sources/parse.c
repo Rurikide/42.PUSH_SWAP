@@ -6,7 +6,7 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 19:53:55 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/04 23:30:21 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/05 11:52:46 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_parse_argv(t_container *a, char **av)
 	int		j;
 
 	i = 0;
+	ft_printf("List of elements : ");
 	while (av[i] != NULL)
 	{
 		j = 0;
@@ -51,9 +52,10 @@ void	ft_parse_argv(t_container *a, char **av)
 				exit (0);
 			}
 			ft_add_back(a, ft_new_element(ft_atoi(input[j]), 0));
-			ft_printf("%d\n", a->bot->nb);
+			ft_printf("%d ", a->bot->nb);
 			j++;
 		}
 		i++;
 	}
+	ft_printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:17:41 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/04 23:32:09 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/05 12:59:19 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,18 @@ void	ft_add_front(t_container *stack, t_element *element)
 	return ;
 }
 
-void	ft_push_element(t_container *src, t_container *dst)
+void	ft_push_stack(t_container *src, t_container *dst, t_stack id)
 {
 	t_element	*temp;
-
+	
 	temp = ft_pop_top(src);
 	if (temp != NULL)
+	{
 		ft_add_front(dst, temp);
+		if (id == 0)
+			ft_printf("pa\n");
+		else if (id == 1)
+			ft_printf("pb\n");
+	}
 	return ;
 }

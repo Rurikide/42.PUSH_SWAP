@@ -6,7 +6,7 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:21:00 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/04 23:31:07 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/05 12:55:37 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ void	ft_print_elements(t_container *a, t_container *b)
 
 	ea = a->top;
 	eb = b->top;
-	ft_printf("[A][B]\n");
+	ft_printf("AB\n");
 	while (ea != NULL || eb != NULL)
 	{
 		if (ea == NULL)
 			ft_printf(" ");
 		else
 		{
-			ft_printf("|%d|", ea->nb);
+			ft_printf("%d", ea->nb);
 			ea = ea->next;
 		}
 		if (eb == NULL)
 			ft_printf(" ");
 		else
 		{
-			ft_printf("|%d|", eb->nb);
+			ft_printf("%d", eb->nb);
 			eb = eb->next;
 		}
 		ft_printf("\n");
