@@ -6,11 +6,20 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 19:53:55 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/05 15:14:18 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/05 22:51:04 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+t_bool	ft_is_valid_argv(char *str)
+{
+	if (ft_is_valid_integer(str) == false)
+		ft_exit_error();
+	if (ft_is_withint_limits(str) == false)
+		ft_exit_error();
+	return (true);
+}
 
 t_bool	ft_is_valid_integer(char *str)
 {
@@ -32,6 +41,43 @@ t_bool	ft_is_valid_integer(char *str)
 	return (true);
 }
 
+t_bool	ft_is_withint_limits(char *str)
+{
+	if (ft_atol(str) > 2147483647 || ft_atol(str) < -2147483648)
+		return (false);
+	else
+		return (true);
+}
+
+t_bool	ft_is_unique_element(t_container *a)
+{
+	t_element	*current_elem;
+	t_element	*all_elements;
+	size_t		i;
+	size_t		j;
+
+	current_elem = a->top;
+	all_elements = a->top->next;
+	j = 0;
+	while (current_elem && current_elem->next)
+	{
+		i = 1;
+		while (i++ + j < a->size)
+		{
+			if (current_elem->nb == all_elements->nb)
+				ft_exit_error();
+			if (all_elements->next)
+				all_elements = all_elements->next;
+		}
+		current_elem = current_elem->next;
+		if (!current_elem->next)
+			return (true);
+		all_elements = current_elem->next;
+		j++;
+	}
+	return (true);
+}
+
 void	ft_parse_argv(t_container *a, char **av)
 {
 	char	**input;
@@ -39,23 +85,19 @@ void	ft_parse_argv(t_container *a, char **av)
 	int		j;
 
 	i = 0;
-	ft_printf("List of elements : ");
 	while (av[i] != NULL)
 	{
 		j = 0;
 		input = ft_split(av[i], ' ');
 		while (input[j])
 		{
-			if (!ft_is_valid_integer(input[j]))
-			{
-				ft_printf("%s Error\n", input[j]);
-				exit (0);
-			}
+			ft_is_valid_argv(input[j]);
 			ft_add_back(a, ft_new_element(ft_atoi(input[j]), 0));
-			ft_printf("%d ", a->bot->nb);
 			j++;
 		}
+		ft_free_table(input);
 		i++;
 	}
-	ft_printf("\n\n");
+	if (a->top != NULL)
+		ft_is_unique_element(a);
 }

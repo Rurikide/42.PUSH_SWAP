@@ -23,67 +23,15 @@ int	main(int ac, char **av)
 	{
 		ft_parse_argv(&a, &av[1]);
 		ft_print_elements(&a, &b);
-
-		ft_rotate_stack(&a, &b, stack_a);
-		ft_print_elements(&a, &b);
-
-		ft_rotate_stack(&a, &b, stack_a);
-		ft_print_elements(&a, &b);
-
-		ft_rotate_stack(&a, &b, stack_a);
-		ft_print_elements(&a, &b);
-
-		ft_reverse_stack(&a, &b, stack_a);
-		ft_print_elements(&a, &b);
-
-		ft_reverse_stack(&a, &b, stack_a);
-		ft_print_elements(&a, &b);
-
-		ft_reverse_stack(&a, &b, stack_a);
-		ft_print_elements(&a, &b);
-
+		if (ft_is_sorted(&a) == true)
+		{
+			ft_clear_container(&a, &b);
+			ft_printf("already sorted!\n");
+			return (0);
+		}
 		ft_push_stack(&a, &b, stack_b);
 		ft_print_elements(&a, &b);
-
-		ft_push_stack(&a, &b, stack_b);
-		ft_print_elements(&a, &b);
-
-		ft_push_stack(&a, &b, stack_b);
-		ft_print_elements(&a, &b);
-
-		ft_rotate_stack(&a, &b, stack_b);
-		ft_print_elements(&a, &b);
-
-
-		ft_reverse_stack(&a, &b, stack_b);
-		ft_print_elements(&a, &b);
-
-		ft_rotate_stack(&a, &b, both_stacks);
-		ft_print_elements(&a, &b);
-
-		ft_reverse_stack(&a, &b, both_stacks);
-		ft_print_elements(&a, &b);
-
-		ft_swap_elements(&a, &b, stack_a);
-		ft_print_elements(&a, &b);
-
-		ft_swap_elements(&a, &b, stack_b);
-		ft_print_elements(&a, &b);
-
-		ft_swap_elements(&a, &b, both_stacks);
-		ft_print_elements(&a, &b);
-
-		ft_push_stack(&b, &a, stack_a);
-		ft_print_elements(&a, &b);
-
-		ft_push_stack(&b, &a, stack_a);
-		ft_print_elements(&a, &b);
-
-		ft_push_stack(&b, &a, stack_a);
-		ft_print_elements(&a, &b);
-
-		ft_push_stack(&b, &a, stack_a);
-		ft_print_elements(&a, &b);
+		ft_clear_container(&a, &b);
 	}
 	return (0);
 }

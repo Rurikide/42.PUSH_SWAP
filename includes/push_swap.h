@@ -6,7 +6,7 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 22:37:03 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/05 14:10:52 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/05 23:00:11 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,17 @@ typedef struct s_container
 }t_container;
 
 t_container	ft_new_container(void);
-t_element	*ft_new_element(int nb, size_t pos);
+t_element	*ft_new_element(long nb, size_t pos);
 t_element	*ft_pop_top(t_container *stack);
 t_bool		ft_is_empty_stack(t_container *stack);
+t_bool		ft_is_valid_argv(char *str);
 t_bool		ft_is_valid_integer(char *str);
+t_bool		ft_is_withint_limits(char *str);
+t_bool		ft_is_unique_element(t_container *a);
+t_bool		ft_is_sorted(t_container *stack);
+long		ft_atol_core(char *str);
+long		ft_atol(char *str);
+void		ft_exit_error(void);
 void		ft_parse_argv(t_container *a, char **av);
 void		ft_print_elements(t_container *a, t_container *b);
 void		ft_add_front(t_container *stack, t_element *element);
@@ -63,4 +70,5 @@ void		ft_shift_up(t_container *stack);
 void		ft_shift_down(t_container *stack);
 void		ft_rotate_stack(t_container *a, t_container *b, t_stack id);
 void		ft_reverse_stack(t_container *a, t_container *b, t_stack id);
+void		ft_clear_container(t_container *a, t_container *b);
 #endif
