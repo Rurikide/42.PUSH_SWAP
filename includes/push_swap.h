@@ -6,15 +6,12 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 22:37:03 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/05 23:00:11 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/06 21:28:45 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include <stdio.h>
-# include <stdlib.h>
-# include <limits.h>
 # include <unistd.h>
 # include "../libft/libsources/libft.h"
 # include "../libft/libsources/ft_printf.h"
@@ -59,7 +56,9 @@ t_bool		ft_is_sorted(t_container *stack);
 long		ft_atol_core(char *str);
 long		ft_atol(char *str);
 void		ft_exit_error(void);
-void		ft_parse_argv(t_container *a, char **av);
+void		ft_parse_argv(t_container *a, char **av, int i, int j);
+void		ft_index_elements_core(t_container *a, int i, size_t count);
+void		ft_index_elements(t_container *a, int i, int j, size_t x);
 void		ft_print_elements(t_container *a, t_container *b);
 void		ft_add_front(t_container *stack, t_element *element);
 void		ft_add_back(t_container *stack, t_element *new);
@@ -70,5 +69,6 @@ void		ft_shift_up(t_container *stack);
 void		ft_shift_down(t_container *stack);
 void		ft_rotate_stack(t_container *a, t_container *b, t_stack id);
 void		ft_reverse_stack(t_container *a, t_container *b, t_stack id);
+void		ft_sort_algo(t_container *a, t_container *b);
 void		ft_clear_container(t_container *a, t_container *b);
 #endif

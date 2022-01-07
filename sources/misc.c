@@ -6,7 +6,7 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:13:46 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/05 22:52:49 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/06 21:47:10 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,45 @@ long	ft_atol(char *str)
 	nombre = ft_atol_core(&str[i]);
 	nombre = nombre * minus;
 	return (nombre);
+}
+
+void	ft_index_elements_core(t_container *a, int i, size_t count)
+{
+	a->top->pos = (size_t)a->size - count;
+	ft_printf("ELEMENT #%d index position = %d\n", i, a->top->pos);
+	if (a->top->next)
+		a->top = a->top->next;
+}
+
+// ft_printf("ELEMENT #%d value = %d\n", i, elem_nb[i]);
+// ft_printf("elem %d index position = %d\n", i, a->top->pos);
+
+void	ft_index_elements(t_container *a, int i, int j, size_t count)
+{
+	t_element	*temp;
+	int			*elem_nb;
+
+	elem_nb = (int [1000]){0};
+	temp = a->top;
+	while (i++ < (int)a->size)
+	{
+		elem_nb[i] = temp->nb;
+		ft_printf("ELEMENT #%d value = %d\n", i, elem_nb[i]);
+		temp = temp->next;
+	}
+	temp = a->top;
+	i = 1;
+	while (a->top->pos == 0)
+	{
+		count = 0;
+		j = 0;
+		while (j++ < (int)a->size)
+		{
+			if (elem_nb[i] < elem_nb[j])
+				count++;
+		}
+		ft_index_elements_core(a, i, count);
+		i++;
+	}
+	a->top = temp;
 }

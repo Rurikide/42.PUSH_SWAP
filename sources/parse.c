@@ -6,7 +6,7 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 19:53:55 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/05 22:51:04 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/06 20:44:48 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,10 @@ t_bool	ft_is_unique_element(t_container *a)
 	return (true);
 }
 
-void	ft_parse_argv(t_container *a, char **av)
+void	ft_parse_argv(t_container *a, char **av, int i, int j)
 {
-	char	**input;
-	int		i;
-	int		j;
+	char		**input;
 
-	i = 0;
 	while (av[i] != NULL)
 	{
 		j = 0;
@@ -99,5 +96,8 @@ void	ft_parse_argv(t_container *a, char **av)
 		i++;
 	}
 	if (a->top != NULL)
+	{
 		ft_is_unique_element(a);
+		ft_index_elements(a, 0, 0, 0);
+	}
 }

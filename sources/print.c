@@ -6,7 +6,7 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:21:00 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/05 23:05:44 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/05 23:42:26 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ void	ft_print_elements(t_container *a, t_container *b)
 		}
 		ft_printf("\n");
 	}
+	ft_printf("\n---\n");
 }
