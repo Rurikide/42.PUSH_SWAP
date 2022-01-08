@@ -6,7 +6,7 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 22:37:03 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/07 14:57:06 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/08 15:40:49 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ t_bool		ft_is_valid_integer(char *str);
 t_bool		ft_is_withint_limits(char *str);
 t_bool		ft_is_unique_element(t_container *a);
 t_bool		ft_is_sorted(t_container *stack);
+t_tier		*ft_set_tier_info(t_container *a);
+size_t		ft_scan_top_tier_elements(t_container *a, t_tier *rank);
 long		ft_atol_core(char *str);
 long		ft_atol(char *str);
 void		ft_exit_error(void);
@@ -77,8 +79,9 @@ void		ft_shift_down(t_container *stack);
 void		ft_rotate_stack(t_container *a, t_container *b, t_stack id);
 void		ft_reverse_stack(t_container *a, t_container *b, t_stack id);
 void		ft_sort_algorithm_selection(t_container *a, t_container *b);
-void		ft_sort_2(t_container *a, t_container *b);
-void		ft_sort_3(t_container *a, t_container *b);
+void		ft_sort_2_3(t_container *a, t_container *b);
 void		ft_sort_4_5(t_container *a, t_container *b);
+void		ft_sort_4_5_b(t_container *a, t_container *b, t_tier *rank);
+void		ft_sort_4_5_c(t_container *a, t_container *b);
 void		ft_clear_container(t_container *a, t_container *b);
 #endif

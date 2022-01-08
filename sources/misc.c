@@ -6,7 +6,7 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:13:46 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/06 21:47:10 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/08 15:41:59 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ long	ft_atol(char *str)
 
 void	ft_index_elements_core(t_container *a, int i, size_t count)
 {
+	(void)i;
 	a->top->pos = (size_t)a->size - count;
-	ft_printf("ELEMENT #%d index position = %d\n", i, a->top->pos);
 	if (a->top->next)
 		a->top = a->top->next;
 }
 
-// ft_printf("ELEMENT #%d value = %d\n", i, elem_nb[i]);
-// ft_printf("elem %d index position = %d\n", i, a->top->pos);
+//	ft_printf("ELEMENT #%d index position = %d\n", i, a->top->pos);
+//	ft_printf("ELEMENT #%d value = %d\n", i, elem_nb[i]);
 
 void	ft_index_elements(t_container *a, int i, int j, size_t count)
 {
@@ -69,7 +69,6 @@ void	ft_index_elements(t_container *a, int i, int j, size_t count)
 	while (i++ < (int)a->size)
 	{
 		elem_nb[i] = temp->nb;
-		ft_printf("ELEMENT #%d value = %d\n", i, elem_nb[i]);
 		temp = temp->next;
 	}
 	temp = a->top;
