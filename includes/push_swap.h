@@ -6,7 +6,7 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 22:37:03 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/06 21:28:45 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/07 14:57:06 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ typedef enum stack
 	stack_b,
 	both_stacks
 }	t_stack;
+
+typedef struct s_tier
+{
+	size_t	top_tier;
+	size_t	mid_tier;
+	size_t	low_tier;
+}t_tier;
 
 typedef struct s_element
 {
@@ -69,6 +76,9 @@ void		ft_shift_up(t_container *stack);
 void		ft_shift_down(t_container *stack);
 void		ft_rotate_stack(t_container *a, t_container *b, t_stack id);
 void		ft_reverse_stack(t_container *a, t_container *b, t_stack id);
-void		ft_sort_algo(t_container *a, t_container *b);
+void		ft_sort_algorithm_selection(t_container *a, t_container *b);
+void		ft_sort_2(t_container *a, t_container *b);
+void		ft_sort_3(t_container *a, t_container *b);
+void		ft_sort_4_5(t_container *a, t_container *b);
 void		ft_clear_container(t_container *a, t_container *b);
 #endif
