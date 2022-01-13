@@ -6,7 +6,7 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 21:22:50 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/08 15:44:34 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/12 22:42:38 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,8 @@ void	ft_sort_algorithm_selection(t_container *a, t_container *b)
 		ft_sort_2_3(a, b);
 	else if (a->size <= 5)
 		ft_sort_4_5(a, b);
+	else if (a->size == 100)
+		ft_sort_100(a, b);
+	else
+		ft_radix_sort(a, b);
 }

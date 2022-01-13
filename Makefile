@@ -6,7 +6,7 @@
 #    By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/01 22:25:32 by tshimoda          #+#    #+#              #
-#    Updated: 2022/01/06 21:29:30 by tshimoda         ###   ########.fr        #
+#    Updated: 2022/01/12 13:46:53 by tshimoda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS= main.c \
 		reverse.c \
 		rotate.c \
 		sort.c \
+		sortcomplex.c \
 		stack.c \
 		swap.c \
 		utils.c \
