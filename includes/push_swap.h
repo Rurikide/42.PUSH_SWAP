@@ -6,7 +6,7 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 22:37:03 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/12 22:43:07 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/13 13:49:03 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_bool		ft_is_unique_element(t_container *a);
 t_bool		ft_is_sorted(t_container *stack);
 t_tier		*ft_set_tier_info(t_container *a);
 size_t		ft_scan_top_tier_elements(t_container *a, t_tier *rank);
-size_t		ft_find_element(t_container *a, size_t j);
+size_t		ft_find_element(t_container *stack, size_t x);
 size_t		ft_count_binary_digit(size_t lowest_rank);
 long		ft_atol_core(char *str);
 long		ft_atol(char *str);
@@ -86,6 +86,11 @@ void		ft_sort_4_5(t_container *a, t_container *b);
 void		ft_sort_4_5_b(t_container *a, t_container *b, t_tier *rank);
 void		ft_sort_4_5_c(t_container *a, t_container *b);
 void		ft_sort_100(t_container *a, t_container *b);
+void		ft_sort_100_b(t_container *a, t_container *b, t_tier *rank);
+void		ft_sort_100_c(t_container *a, t_container *b, t_tier *rank);
+void		ft_sort_100_d(t_container *a, t_container *b, t_tier *rank);
+void		ft_sort_100_e(t_container *a, t_container *b, t_tier *rank);
+void		ft_sort_100_f(t_container *a, t_container *b, t_tier *rank);
 void		ft_radix_sort(t_container *a, t_container *b);
 void		ft_clear_container(t_container *a, t_container *b);
 #endif

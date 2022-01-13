@@ -6,7 +6,7 @@
 /*   By: tshimoda <tshimoda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 21:22:50 by tshimoda          #+#    #+#             */
-/*   Updated: 2022/01/12 22:42:38 by tshimoda         ###   ########.fr       */
+/*   Updated: 2022/01/13 13:41:56 by tshimoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,43 +39,6 @@ void	ft_sort_2_3(t_container *a, t_container *b)
 	}
 }
 
-void	ft_sort_4_5_c(t_container *a, t_container *b)
-{
-	if (a->top->pos > a->top->next->pos || b->top->pos < b->bot->pos)
-	{
-		if (a->top->pos > a->top->next->pos && b->top->pos < b->bot->pos)
-			ft_swap_elements(a, b, both_stacks);
-		else if (a->top->pos > a->top->next->pos)
-			ft_swap_elements(a, b, stack_a);
-		else
-			ft_swap_elements(a, b, stack_b);
-	}
-	while (ft_is_empty_stack(b) == false)
-		ft_push_stack(b, a, stack_a);
-}
-
-void	ft_sort_4_5_b(t_container *a, t_container *b, t_tier *rank)
-{
-	if (a->bot->pos != rank->low_tier)
-	{
-		if (a->top->pos == rank->low_tier)
-		{
-			if (b->top->pos < b->bot->pos)
-				ft_rotate_stack(a, b, both_stacks);
-			else
-				ft_rotate_stack(a, b, stack_a);
-		}
-		else
-		{
-			if (b->top->pos < b->bot->pos)
-				ft_reverse_stack(a, b, both_stacks);
-			else
-				ft_reverse_stack(a, b, stack_a);
-		}	
-	}
-	ft_sort_4_5_c(a, b);
-}
-
 void	ft_sort_4_5(t_container *a, t_container *b)
 {
 	t_tier	*rank;
@@ -100,6 +63,43 @@ void	ft_sort_4_5(t_container *a, t_container *b)
 	}
 	ft_sort_4_5_b(a, b, rank);
 	free(rank);
+}
+
+void	ft_sort_4_5_b(t_container *a, t_container *b, t_tier *rank)
+{
+	if (a->bot->pos != rank->low_tier)
+	{
+		if (a->top->pos == rank->low_tier)
+		{
+			if (b->top->pos < b->bot->pos)
+				ft_rotate_stack(a, b, both_stacks);
+			else
+				ft_rotate_stack(a, b, stack_a);
+		}
+		else
+		{
+			if (b->top->pos < b->bot->pos)
+				ft_reverse_stack(a, b, both_stacks);
+			else
+				ft_reverse_stack(a, b, stack_a);
+		}	
+	}
+	ft_sort_4_5_c(a, b);
+}
+
+void	ft_sort_4_5_c(t_container *a, t_container *b)
+{
+	if (a->top->pos > a->top->next->pos || b->top->pos < b->bot->pos)
+	{
+		if (a->top->pos > a->top->next->pos && b->top->pos < b->bot->pos)
+			ft_swap_elements(a, b, both_stacks);
+		else if (a->top->pos > a->top->next->pos)
+			ft_swap_elements(a, b, stack_a);
+		else
+			ft_swap_elements(a, b, stack_b);
+	}
+	while (ft_is_empty_stack(b) == false)
+		ft_push_stack(b, a, stack_a);
 }
 
 void	ft_sort_algorithm_selection(t_container *a, t_container *b)
